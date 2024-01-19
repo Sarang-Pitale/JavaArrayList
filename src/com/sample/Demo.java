@@ -6,9 +6,15 @@ import java.util.Iterator;
 
 public class Demo {
     public static void main(String[] args) {
+        ArrayList oldRiskyList=new ArrayList();// we can create this type of array list but it is not type safe
+        oldRiskyList.add(1);
+        oldRiskyList.add("Strings");// you can add any type of data but at time of operation it can make issues so use generics
+
         ArrayList<Integer> intArrayList = new ArrayList<>();
         intArrayList.add(10);
         intArrayList.add(20);
+        intArrayList.add(null);
+        //intArrayList.add("String Value");// cannot add element other than Integer so TypeSafe
         intArrayList.add(30);// Add Element in sequence
         System.out.println(intArrayList); //Print List
         System.out.println(intArrayList.get(0)); //Get element of 0th location
@@ -19,19 +25,23 @@ public class Demo {
         intArrayList.remove(1); //remove the element of given index
         System.out.println(intArrayList);
         System.out.println(intArrayList.size()); // gives size of the list
+
         System.out.println("*****Traversing through simple for loop******");
         for(int i=0;i< intArrayList.size();i++){
             System.out.println(intArrayList.get(i));
         }
+
         System.out.println("*****Traversing through enhanced for loop******");
         for(int element:intArrayList){
             System.out.println(element);
         }
+
         System.out.println("*****Traversing through Iterator******");
         Iterator iterator= intArrayList.iterator();
         while(iterator.hasNext()){
             System.out.println(iterator.next());
         }
+
         System.out.println("*****Traversing through lambda and foreach******");
         intArrayList.forEach(item->{
             System.out.println(item);
